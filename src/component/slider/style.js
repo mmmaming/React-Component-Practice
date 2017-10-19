@@ -30,8 +30,16 @@ const sliderLi = {
   overflow : 'hidden'
 }
 
+const dots = {
+  height: '30px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
 export default {
   sliderWrapper,
   sliderUl,
-  sliderLi
+  sliderLi,
+  dots
 }

@@ -10,7 +10,7 @@ import style from './style'
 
 // component
 import SliderItem from './slider-item';
-
+import Dots from './slider-dot';
 class Slider extends React.Component {
   constructor(props) {
     super(props);
@@ -143,7 +143,7 @@ class Slider extends React.Component {
     console.log(this.state.swipeDistance, '类型是: '+ typeof this.state.swipeDistance);
     return (
         <div style={style.sliderWrapper}>
-          <div>{this.state.activeIndex}</div>
+          <Dots count={this._count} active={this.state.activeIndex}/>
           <ul
               ref="ul"
               style={{

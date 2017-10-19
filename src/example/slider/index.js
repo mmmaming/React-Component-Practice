@@ -21,7 +21,7 @@ export default class SliderExample extends React.Component {
     return (
         <div>
           <div style={{width: '220px', height: '100px', marginLeft: '50px', marginTop: '200px'}}>
-            <Slider activeIndex={2}>
+            <Slider activeIndex={0}>
               <Slider.Item>
                 000000000000000000
               </Slider.Item>
