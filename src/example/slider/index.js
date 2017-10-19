@@ -14,25 +14,29 @@ import {
 export default class SliderExample extends React.Component {
 
   @observable list = [];
-
+  addData = () => {
+    this.list.push('cc','ed','ff');
+  }
   render() {
-    console.log(this.list);
     return (
-        <div style={{width: '220px', height: '100px', marginLeft: '50px', marginTop: '200px'}}>
-          <Slider activeIndex={1}>
-            <Slider.Item>
-              abc
-            </Slider.Item>
-            <Slider.Item>
-              def
-            </Slider.Item>
-            <Slider.Item>
-              ghi
-            </Slider.Item>
-            {
-              this.list.map((v, i) => <Slider.Item key={i}>{v}</Slider.Item>)
-            }
-          </Slider>
+        <div>
+          <div style={{width: '220px', height: '100px', marginLeft: '50px', marginTop: '200px'}}>
+            <Slider activeIndex={2}>
+              <Slider.Item>
+                000000000000000000
+              </Slider.Item>
+              <Slider.Item>
+                11111111111111111
+              </Slider.Item>
+              <Slider.Item>
+                22222222222222222
+              </Slider.Item>
+              {
+                this.list.map((v, i) => <Slider.Item key={i}>{v}</Slider.Item>)
+              }
+            </Slider>
+          </div>
+          <button onClick={this.addData}>添加数据</button>
         </div>
     )
   }

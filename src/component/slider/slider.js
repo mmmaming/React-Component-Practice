@@ -20,10 +20,16 @@ class Slider extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this._count = React.Children.count(nextProps.children);
+    this.swipeByActiveIndex(this.state.activeIndex);
+  }
+
   componentDidMount() {
-    this.setState({
-      swipeDistance: '-' + 100 / this._count * this.state.activeIndex + '%'
-    })
+    const activeIndex = this.state.activeIndex;
+    const index = activeIndex >= 0 && activeIndex < this._count ? activeIndex : 0;
+    this.setState({activeIndex: index});
+    this.swipeByActiveIndex(index);
   }
 
   // 子元素个数
@@ -35,15 +41,26 @@ class Slider extends React.Component {
   // 移动组件
   swipe = () => {
     this.setState({
-      swipeDistance: this._swipeDistance + '%'
-    })
+      swipeDistance: this._swipeDistance
+    });
   };
 
   swipeEnd = (direction) => {
-    switch(direction) {
+    let index;
+    switch (direction) {
       case 1:
+        index = this.state.activeIndex - 1;
+        this.setState({
+          activeIndex: index
+        });
+        this.swipeByActiveIndex(index);
         break;
       case -1:
+        index = this.state.activeIndex + 1;
+        this.setState({
+          activeIndex: this.state.activeIndex + 1
+        });
+        this.swipeByActiveIndex(index);
         break;
       default:
         break;
@@ -59,12 +76,13 @@ class Slider extends React.Component {
       onTouchStart(e) {
         const startX = e.nativeEvent.changedTouches[0].clientX;
         Object.assign(self._touchObject, {startX: startX});
-        self.ticker = setInterval(self.swipe, 50);
+        // 当前移动距离占显示宽度的百分比
+        self.ticker = setInterval(self.swipe, 100);
       },
       onTouchMove(e) {
         const direction = self.getDirection(self._touchObject.startX, e.nativeEvent.changedTouches[0].clientX);
         const endX = e.nativeEvent.changedTouches[0].clientX;
-        Object.assign(self._touchObject, {direction: direction, endX: endX});
+        Object.assign(self._touchObject, {direction, endX});
         self.setSwipeDistance();
       },
       onTouchEnd(e) {
@@ -76,16 +94,24 @@ class Slider extends React.Component {
         // 当移动距离超过一半时，滑动到下一个item，否则退回原item
         const needSwipe = Math.abs(endX - self._touchObject.startX) >= (self.refs.ul.offsetWidth / self._count / 2);
         if (needSwipe) {
-
+          self.swipeEnd(self._touchObject.direction);
+        } else {
+          self.swipeByActiveIndex(self.state.activeIndex);
         }
       },
       onTouchCancel(e) {
-        console.log(123);
+        console.log('cancel');
       }
     }
   };
 
-
+  // 根据activeIndex设置滑动距离
+  swipeByActiveIndex = (index) => {
+    this._swipeDistance = 100 / this._count * index * -1;
+    this.setState({
+      swipeDistance: this._swipeDistance
+    });
+  };
 
   /*
    * 方向:
@@ -110,23 +136,25 @@ class Slider extends React.Component {
     const displayPercentage = 100 / this._count;
     // 当前移动距离占显示宽度的百分比
     const swipePercentage = Math.abs(this._touchObject.endX - this._touchObject.startX) / (this.refs.ul.offsetWidth / this._count);
-    // 目前已经移动过的百分比 + 移动时transform的移动百分比
-    this._swipeDistance = (displayPercentage * this.props.activeIndex) + swipePercentage * displayPercentage * this._touchObject.direction;
+    this._swipeDistance = (-1 * displayPercentage * this.state.activeIndex) + (swipePercentage * displayPercentage * this._touchObject.direction);
   };
 
   render() {
+    console.log(this.state.swipeDistance, '类型是: '+ typeof this.state.swipeDistance);
     return (
         <div style={style.sliderWrapper}>
+          <div>{this.state.activeIndex}</div>
           <ul
               ref="ul"
               style={{
-                transform: `translate3d(${this.state.swipeDistance}, 0, 0)`,
+                transform: `translate3d(${this.state.swipeDistance}%, 0, 0)`,
                 width: this._count * 100 + '%',
                 ...style.sliderUl}}
               {...this.getTouchEvents()}
           >
             {this.props.children}
           </ul>
+
         </div>
     )
   }
