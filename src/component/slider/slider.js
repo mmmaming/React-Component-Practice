@@ -83,18 +83,16 @@ class Slider extends React.Component {
         const direction = self.getDirection(self._touchObject.startX, e.nativeEvent.changedTouches[0].clientX);
         const endX = e.nativeEvent.changedTouches[0].clientX;
         Object.assign(self._touchObject, {direction, endX});
-        self.setSwipeDistance();
+        self.isSwipe(direction, self.state.activeIndex) && self.setSwipeDistance();
       },
       onTouchEnd(e) {
         const endX = e.nativeEvent.changedTouches[0].clientX;
         Object.assign(self._touchObject, {endX: endX});
-
         clearInterval(self.ticker);
-
         // 当移动距离超过一半时，滑动到下一个item，否则退回原item
         const needSwipe = Math.abs(endX - self._touchObject.startX) >= (self.refs.ul.offsetWidth / self._count / 2);
         if (needSwipe) {
-          self.swipeEnd(self._touchObject.direction);
+          self.isSwipe(self._touchObject.direction, self.state.activeIndex) && self.swipeEnd(self._touchObject.direction);
         } else {
           self.swipeByActiveIndex(self.state.activeIndex);
         }
@@ -138,6 +136,17 @@ class Slider extends React.Component {
     const swipePercentage = Math.abs(this._touchObject.endX - this._touchObject.startX) / (this.refs.ul.offsetWidth / this._count);
     this._swipeDistance = (-1 * displayPercentage * this.state.activeIndex) + (swipePercentage * displayPercentage * this._touchObject.direction);
   };
+
+  // 判断是否可以滑动
+  isSwipe = (direction, index) => {
+    if (index === 0) {
+      return direction < 0;
+    }
+    if(index === this._count - 1) {
+      return direction > 0;
+    }
+    return true;
+  }
 
   render() {
     return (
