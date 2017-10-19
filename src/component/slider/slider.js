@@ -140,10 +140,9 @@ class Slider extends React.Component {
   };
 
   render() {
-    console.log(this.state.swipeDistance, '类型是: '+ typeof this.state.swipeDistance);
     return (
         <div style={style.sliderWrapper}>
-          <Dots count={this._count} active={this.state.activeIndex}/>
+
           <ul
               ref="ul"
               style={{
@@ -154,6 +153,7 @@ class Slider extends React.Component {
           >
             {this.props.children}
           </ul>
+          {this.props.dots && <Dots count={this._count} active={this.state.activeIndex}/>}
 
         </div>
     )
@@ -161,11 +161,13 @@ class Slider extends React.Component {
 }
 
 Slider.propTypes = {
-  activeIndex: PropTypes.number
+  activeIndex: PropTypes.number,
+  dots: PropTypes.bool
 };
 
 Slider.defaultProps = {
-  activeIndex: 0
+  activeIndex: 0,
+  dots: true
 }
 
 Slider.Item = SliderItem;

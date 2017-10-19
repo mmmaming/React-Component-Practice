@@ -11,7 +11,7 @@ export default class Dots extends React.Component {
     const icon = [];
     for (let i = 0; i < this.props.count; i++) {
       icon.push(<div key={i} style={{
-        background  : this.props.active === i ? "#8b8b8b" : '#bbbbbb',
+        background  : this.props.active === i ? "#ff6f22" : 'rgba(255,111,34,0.30',
         width       : "7px",
         height      : "7px",
         borderRadius: "100%",

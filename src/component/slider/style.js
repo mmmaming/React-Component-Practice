@@ -5,14 +5,16 @@
 const sliderWrapper = {
   width   : '100%',
   height  : '100%',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  display: 'flex',
+  flexDirection: 'column'
 }
 
 const sliderUl = {
   display      : 'flex',
   flexDirection: 'row',
   listStyleType: 'none',
-  height       : '100%',
+  // height       : '100%',
   padding      : 0,
   margin       : 0,
   transition   : '500ms',
@@ -27,14 +29,15 @@ const sliderLi = {
   border   : '2px solid red',
   width    : '100%',
   height   : '100%',
-  overflow : 'hidden'
+  overflow : 'hidden',
+  flex: '1 1 auto'
 }
 
 const dots = {
-  height: '30px',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  flex: '0 0 30px'
 }
 
 export default {

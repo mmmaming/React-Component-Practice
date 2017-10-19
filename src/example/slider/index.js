@@ -23,13 +23,19 @@ export default class SliderExample extends React.Component {
           <div style={{width: '220px', height: '100px', marginLeft: '50px', marginTop: '200px'}}>
             <Slider activeIndex={0}>
               <Slider.Item>
-                000000000000000000
+                <div style={{height: '150px'}}>
+                  000000000000000000
+                </div>
               </Slider.Item>
               <Slider.Item>
-                11111111111111111
+                <div style={{height: '150px'}}>
+                  11111111111111
+                </div>
               </Slider.Item>
               <Slider.Item>
-                22222222222222222
+                <div style={{height: '150px'}}>
+                  2222222222222222222
+                </div>
               </Slider.Item>
               {
                 this.list.map((v, i) => <Slider.Item key={i}>{v}</Slider.Item>)
