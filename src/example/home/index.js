@@ -12,6 +12,9 @@ export default class Home extends React.Component {
             <li>
               <a href="#/slider">轮播图</a>
             </li>
+            <li>
+              <a href="#/button">按钮</a>
+            </li>
           </ul>
         </div>
     )

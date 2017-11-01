@@ -9,6 +9,7 @@ import createBrowserHistory from 'history/createHashHistory';
 // component
 import Home from './home';
 import SliderExample from './slider';
+import ButtonExample from './button';
 const history  = createBrowserHistory();
 export default class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ export default class App extends React.Component {
            <div>
              <Route exact path="/" component={Home} />
              <Route path="/slider" component={SliderExample} />
+             <Route path="/button" component={ButtonExample} />
            </div>
          </Router>
     )

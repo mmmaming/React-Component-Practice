@@ -3,6 +3,8 @@
  */
 // export Slider from './slider';
 import Slider from './slider';
+import Button from './button';
 export {
-  Slider
+  Slider,
+    Button
 }

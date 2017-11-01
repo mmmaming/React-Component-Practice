@@ -1,0 +1,66 @@
+.button {
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.button-default {
+    background: #888;
+    color: #FFFFFF;
+}
+
+.button-primary {
+    background: #3bb4f2;
+    color: #FFFFFF;
+}
+
+.button-success {
+    background: #5eb95e;
+    color: #FFFFFF;
+}
+
+.button-warning {
+    background: #f37b1d;
+    color: #FFFFFF;
+}
+
+.button-alert {
+    background: #dd514c;
+    color: #FFFFFF;
+}
+
+.button-dark {
+    background: #393939;
+    color: #FFFFFF;
+}
+
+/* hollow*/
+
+.button-default-hollow {
+    color: #888;
+    border: 1px solid #888;
+}
+
+.button-primary-hollow {
+    color: #3bb4f2;
+    border: 1px solid #3bb4f2;
+}
+
+.button-success-hollow {
+    color: #5eb95e;
+    border: 1px solid #5eb95e;
+}
+
+.button-warning-hollow {
+    color: #f37b1d;
+    border: 1px solid #f37b1d;
+}
+
+.button-alert-hollow {
+    color: #dd514c;
+    border: 1px solid #dd514c;
+}
+
+.button-dark-hollow {
+    color: #393939;
+    border: 1px solid #393939;
+}
