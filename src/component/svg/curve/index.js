@@ -106,38 +106,48 @@ export default class Matrix extends React.Component {
   render() {
     const {list, columnNum, lineWidth, colGap, itemSize, padding} = this.props;
     const points                                                  = this.renderContent(list.length, columnNum, lineWidth, colGap, itemSize, padding);
+    // 线间距的一半， 用来计算线的位置
     const halfColGap                                              = colGap / 2;
-    let d                                                         = `M0 ${halfColGap}`;
+    let d                                                         = `M${0 - 30} ${halfColGap}`;
+    // 行数
     const rows                                                    = Math.ceil(list.length / columnNum);
+    // 当元素不满一行时，线的显示长度
+    const linePercentage                                          = lineWidth * (list.length % columnNum !== 0 ? (list.length % columnNum - 1) / (columnNum - 1) : 1);
+    // 贝塞尔控制点的横坐标偏移量
+    const bezierPoint                                             = 40;
     for (let idx_row = 0; idx_row < rows; idx_row++) {
+      // 上一条线的高度
+      let prevLineHeight    = idx_row * colGap - halfColGap;
+      // 当前线的高度  计算贝塞尔控制点用
+      let currentLineHeight = idx_row * colGap + halfColGap;
+      if (idx_row === 0 && idx_row === rows - 1) {
+        d += `  L${linePercentage} ${halfColGap}`;
+        break;
+      }
       if (idx_row % 2 === 0) {
-        // 如果是第一行且只有一行
-        if (idx_row === 0 && idx_row === rows - 1) {
-          d += `  L${lineWidth * (list.length % columnNum !== 0 ? (list.length % columnNum - 1) / (columnNum - 1) : 1)} ${halfColGap}`;
-        // 如果是第一行且不仅有一行
+        if (idx_row === 0) {
+          d += ` L${lineWidth} ${halfColGap}`;
         } else {
-          if (idx_row === 0 ) {
-            d += ` L${lineWidth} ${halfColGap}`;
+          if (idx_row === rows - 1) {
+            d += ` C${0 - bezierPoint} ${prevLineHeight} ${0 - bezierPoint} ${currentLineHeight} 0 ${currentLineHeight}`;
+            d += ` L${linePercentage} ${currentLineHeight}`;
           } else {
-             if (idx_row === rows - 1) {
-               d += ` C${0 - 40} ${idx_row * colGap - halfColGap} ${0 - 40} ${idx_row * colGap + halfColGap} 0 ${idx_row * colGap + halfColGap}`;
-               d += ` L${lineWidth * (list.length % columnNum !== 0 ?  (list.length % columnNum - 1) / (columnNum - 1) : 1)} ${idx_row * colGap + halfColGap}`;
-             } else {
-               d += ` C${0 - 40} ${idx_row * colGap - halfColGap} ${0 - 40} ${idx_row * colGap + halfColGap} 0 ${idx_row * colGap + halfColGap}`;
-               d += ` L${lineWidth} ${idx_row * colGap + halfColGap}`;
-             }
+            d += ` C${0 - bezierPoint} ${prevLineHeight} ${0 - bezierPoint} ${currentLineHeight} 0 ${currentLineHeight}`;
+            d += ` L${lineWidth} ${currentLineHeight}`;
           }
         }
       } else {
         if (idx_row === rows - 1) {
-          d += ` C${lineWidth + 40} ${idx_row * colGap - halfColGap} ${lineWidth + 40} ${idx_row * colGap + halfColGap} ${lineWidth} ${idx_row * colGap + halfColGap}`;
-          d += ` L${lineWidth - lineWidth * (list.length % columnNum !== 0 ?   (list.length % columnNum - 1) / (columnNum - 1) : 1)} ${idx_row * colGap + halfColGap}`
+          d += ` C${lineWidth + bezierPoint} ${prevLineHeight} ${lineWidth + bezierPoint} ${currentLineHeight} ${lineWidth} ${currentLineHeight}`;
+          d += ` L${lineWidth - linePercentage} ${currentLineHeight}`
         } else {
-          d += ` C${lineWidth + 40} ${idx_row * colGap - halfColGap} ${lineWidth + 40} ${idx_row * colGap + halfColGap} ${lineWidth} ${idx_row * colGap + halfColGap}`;
-          d += ` L0 ${idx_row * colGap + halfColGap}`
+          d += ` C${lineWidth + bezierPoint} ${prevLineHeight} ${lineWidth + bezierPoint} ${currentLineHeight} ${lineWidth} ${currentLineHeight}`;
+          d += ` L0 ${currentLineHeight}`
         }
       }
+
     }
+
     return (
         <div style={{
           position  : 'relative',
