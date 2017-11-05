@@ -68,7 +68,8 @@ export default class Matrix extends React.Component {
    * @param columnNum 每行显示几个item
    * @param lineWidth 每行的线长度
    * @param colGap 行间距
-   * @param screen_height
+   * @param itemSize item尺寸
+   * @param padding 间距
    * @returns {Array}
    */
   renderContent(items_length, columnNum, lineWidth, colGap, itemSize, padding) {
