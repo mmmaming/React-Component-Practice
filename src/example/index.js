@@ -10,6 +10,7 @@ import createBrowserHistory from 'history/createHashHistory';
 import Home from './home';
 import SliderExample from './slider';
 import ButtonExample from './button';
+import CurveExample from './curve';
 const history  = createBrowserHistory();
 export default class App extends React.Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
              <Route exact path="/" component={Home} />
              <Route path="/slider" component={SliderExample} />
              <Route path="/button" component={ButtonExample} />
+             <Route path="/curve" component={CurveExample} />
            </div>
          </Router>
     )

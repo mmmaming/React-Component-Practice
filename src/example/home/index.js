@@ -15,6 +15,10 @@ export default class Home extends React.Component {
             <li>
               <a href="#/button">按钮</a>
             </li>
+
+            <li>
+              <a href="#/curve">曲线</a>
+            </li>
           </ul>
         </div>
     )

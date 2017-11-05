@@ -4,7 +4,9 @@
 // export Slider from './slider';
 import Slider from './slider';
 import Button from './button';
+import Curve from './svg/curve';
 export {
-  Slider,
-    Button
+    Slider,
+    Button,
+    Curve
 }
