@@ -149,21 +149,6 @@ export default class Matrix extends React.Component {
           <svg width="100%" height="100%" version="1.1"
                xmlns="http://www.w3.org/2000/svg"
                style={{paddingLeft: this.props.padding}}>
-
-            {/*<path style={{fill: 'none', stroke:"#8161be", strokeWidth: 15,*/}
-            {/*strokeLinejoin:'round', strokeLinecap: 'round',*/}
-            {/*}} d={`*/}
-            {/*M0 30*/}
-            {/*L280 30*/}
-            {/*C320 30 320 90 280 90*/}
-            {/*L0 90*/}
-            {/*C-40 90 -40 150 0 150*/}
-            {/*L348 138.5*/}
-            {/*C368 153.5 368 183.5 348 198.5*/}
-            {/*L25 198.5*/}
-            {/*C5 213.5 5 243.5 25 258.5*/}
-            {/*L348 258.5*/}
-            {/*`}/>*/}
             <path style={{
               fill          : 'none', stroke: "#8161be", strokeWidth: 15,
               strokeLinejoin: 'round', strokeLinecap: 'round',
@@ -172,18 +157,7 @@ export default class Matrix extends React.Component {
               fillOpacity    : 0, stroke: "white", strokeWidth: 1,
               strokeLinejoin : 'round', strokeLinecap: 'round',
               strokeDasharray: '3 3'
-            }} d="
-            M25 18.5
-            L348 18.5
-            C368 33.5 368 63.5 348 78.5
-            L25 78.5
-            C5 93.5 5 123.5 25 138.5
-            L348 138.5
-            C368 153.5 368 183.5 348 198.5
-            L25 198.5
-            C5 213.5 5 243.5 25 258.5
-            L348 258.5
-            "/>
+            }} d={d}/>
 
           </svg>
         </div>
