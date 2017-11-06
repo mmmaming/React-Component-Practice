@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Point {
-  constructor(x, y) {
+  constructor(x, y, centerX, centerY) {
     this.x = x;
     this.y = y;
+    this.centerX =centerX;
+    this.centerY =centerY;
   }
 }
 
@@ -23,7 +25,6 @@ export default class Matrix extends React.Component {
   renderContent(items_length, columnNum, lineWidth, colGap, itemSize, padding) {
     const points = [];
     let count    = 0;
-
     const rows   = Math.ceil(items_length / columnNum);
     const rowGap = lineWidth / (columnNum - 1);
     for (var idx_row = 0; idx_row < rows; idx_row++) {
@@ -33,22 +34,29 @@ export default class Matrix extends React.Component {
           break;
         }
         if (idx_row % 2 === 0) {
-          points.push(new Point((idx_col * rowGap - itemSize / 2) + padding, (idx_row + 1) * colGap - colGap / 2 - itemSize / 2));
+          points.push(new Point((idx_col * rowGap - itemSize / 2) + padding, (idx_row + 1) * colGap - colGap / 2 - itemSize / 2, (idx_col * rowGap ), (idx_row + 1) * colGap - colGap / 2));
         } else {
-          points.push(new Point(((columnNum - (idx_col + 1)) * rowGap - itemSize / 2) + padding, (idx_row + 1) * colGap - colGap / 2 - itemSize / 2));
+          points.push(new Point(((columnNum - (idx_col + 1)) * rowGap - itemSize / 2) + padding, (idx_row + 1) * colGap - colGap / 2 - itemSize / 2, ((columnNum - (idx_col + 1)) * rowGap), (idx_row + 1) * colGap - colGap / 2 ));
         }
       }
     }
     return points;
-
   }
 
   renderPoints = (list, points) => {
     return list.map((item, key) => {
       return <div key={key} style={{position: 'absolute', left: points[key].x + 'px', top: points[key].y + 'px'}}>
-        {this.props.renderPoints(item)}
+        {this.props.renderPoints(item, key)}
       </div>
     })
+  }
+
+  renderCircle = (list, points) => {
+    return list.map((item, key) => {
+      return <circle key={key} style={{boxSizing: 'border-box'}} cx={points[key].centerX} cy={points[key].centerY} r={18.5} stroke="black"
+                     fill="red"/>
+    })
+
   }
 
   render() {
@@ -95,7 +103,6 @@ export default class Matrix extends React.Component {
       }
 
     }
-
     return (
         <div style={{
           position: 'relative',
@@ -117,7 +124,7 @@ export default class Matrix extends React.Component {
               strokeLinejoin : 'round', strokeLinecap: 'round',
               strokeDasharray: '3 3'
             }} d={d}/>
-
+            {this.renderCircle(list, points)}
           </svg>
         </div>
     )

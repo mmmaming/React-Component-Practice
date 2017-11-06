@@ -15,10 +15,10 @@ export default class CurveExample extends React.Component {
   renderPoints = (item) => {
 
     if (item.type === 'gift') {
-      return item.isOpen ? <div style={{width:'37px',height: '37px',border: '1px solid red'}}>{item.index}</div> : <div style={{width:'37px',height: '37px',border: '1px solid grey'}}>{item.index}</div>;
+      return item.isOpen ? <div style={{width:'37px',height: '37px',border: '1px solid red', boxSizing: 'border-box'}}>{item.index}</div> : <div style={{width:'37px',height: '37px',border: '1px solid grey', boxSizing: 'border-box'}}>{item.index}</div>;
     }
     if (item.type === 'sign') {
-      return item.isOpen ? <div style={{width:'37px',height: '37px',border: '1px solid black'}}>{item.index}</div> : <div style={{width:'37px',height: '37px',border: '1px solid grey'}}>{item.index}</div>;
+      return item.isOpen ? <div style={{width:'37px',height: '37px',border: '1px solid black', boxSizing: 'border-box'}}>{item.index}</div> : <div style={{width:'37px',height: '37px',border: '1px solid grey', boxSizing: 'border-box'}}>{item.index}</div>;
     }
   }
   render() {
