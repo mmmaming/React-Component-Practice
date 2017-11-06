@@ -1,16 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-// Curve.propTypes = {
-//   lineOfNum: PropTypes.number,
-//   count: PropTypes.number,
-//   lineWidth: PropTypes.number,
-//   lineSpace: PropTypes.number,
-//   lineBold: PropTypes.number
-// }
-
-
 class Point {
   constructor(x, y) {
     this.x = x;
@@ -133,3 +123,24 @@ export default class Matrix extends React.Component {
     )
   }
 }
+
+Matrix.propTypes = {
+  list: PropTypes.array.isRequired,
+  columnNum: PropTypes.number,
+  lineWidth: PropTypes.number,
+  colGap: PropTypes.number,
+  itemSize: PropTypes.number,
+  padding: PropTypes.number,
+  renderPoints: PropTypes.func
+};
+
+Matrix.defaultProps = {
+  list: [],
+  columnNum: 6,
+  lineWidth: 280,
+  colGap: 60,
+  itemSize: 37,
+  padding: 40,
+  renderPoints: () => {}
+};
+
