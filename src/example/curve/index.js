@@ -36,8 +36,8 @@ export default class CurveExample extends React.Component {
       {type: 'sign', isOpen: true, index: 23}, {type: 'sign', isOpen: true, index: 24},
       {type: 'sign', isOpen: true, index: 25}, {type: 'sign', isOpen: true, index: 26}];
     return (
-        <div style={{height: '3000px', width: '1000px'}}>
-          <Curve list={list} itemSize={37} renderPoints={this.renderPoints} columnNum={6} lineWidth={280} colGap={60} padding={50}/>
+        <div style={{height: '240px', width: '360px', overflowY:'hidden'}}>
+          <Curve list={list} itemSize={37} renderPoints={this.renderPoints} columnNum={6} lineWidth={280} colGap={60} padding={40}/>
         </div>
     )
   }

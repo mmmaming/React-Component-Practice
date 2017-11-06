@@ -1,48 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-class Curve extends React.Component {
-  render() {
-    return (
-        <svg width="100%" height="100%" version="1.1"
-             xmlns="http://www.w3.org/2000/svg">
 
-          <path style={{
-            fill          : 'none', stroke: "#8161be", strokeWidth: 15,
-            strokeLinejoin: 'round', strokeLinecap: 'round',
-          }} d={`
-              M25 18.5
-              L348 18.5
-              C368 33.5 368 63.5 348 78.5
-              L25 78.5
-              C-5 78.5 -5 138.5 25 138.5
-              L348 138.5
-              C368 153.5 368 183.5 348 198.5
-              L25 198.5
-              C5 213.5 5 243.5 25 258.5
-              L348 258.5
-              `}/>
-
-          <path style={{
-            fillOpacity    : 0, stroke: "white", strokeWidth: 1,
-            strokeLinejoin : 'round', strokeLinecap: 'round',
-            strokeDasharray: '3 3'
-          }} d="
-            M25 18.5
-            L348 18.5
-            C368 33.5 368 63.5 348 78.5
-            L25 78.5
-            C5 93.5 5 123.5 25 138.5
-            L348 138.5
-            C368 153.5 368 183.5 348 198.5
-            L25 198.5
-            C5 213.5 5 243.5 25 258.5
-            L348 258.5
-            "/>
-
-        </svg>
-    )
-  }
-}
 
 // Curve.propTypes = {
 //   lineOfNum: PropTypes.number,
@@ -150,22 +108,22 @@ export default class Matrix extends React.Component {
 
     return (
         <div style={{
-          position  : 'relative',
-          marginTop : '100px',
-          marginLeft: '100px',
-          border    : '1px solid red',
-          height    : '100%'
+          position: 'relative',
+          width   : '100%',
+          height  : '100%',
+          overflow: 'auto',
+          boxSizing: 'border-box'
         }}>
           {this.renderPoints(list, points)}
-          <svg width="100%" height="100%" version="1.1"
+          <svg height="100%" version="1.1"
                xmlns="http://www.w3.org/2000/svg"
-               style={{paddingLeft: this.props.padding}}>
+               style={{paddingLeft: this.props.padding,     overflow: 'visible'}}>
             <path style={{
               fill          : 'none', stroke: "#8161be", strokeWidth: 15,
               strokeLinejoin: 'round', strokeLinecap: 'round',
             }} d={d}/>
             <path style={{
-              fillOpacity    : 0, stroke: "white", strokeWidth: 1,
+              fillOpacity    : 0, stroke: "#9480ca", strokeWidth: 1,
               strokeLinejoin : 'round', strokeLinecap: 'round',
               strokeDasharray: '3 3'
             }} d={d}/>
