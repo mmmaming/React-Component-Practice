@@ -1,5 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+
 
 class Point {
   constructor(x, y, centerX, centerY) {
@@ -16,12 +19,13 @@ export default class Matrix extends React.Component {
    *
    * @param items_length item的个数
    * @param columnNum 每行显示几个item
-   * @param lineWidth 每行的线长度
+   * @param lineWidth 组件宽度
    * @param colGap 行间距
    * @param itemSize item尺寸
    * @param padding 间距
    * @returns {Array}
    */
+
   renderContent(items_length, columnNum, lineWidth, colGap, itemSize, padding) {
     const points = [];
     let count    = 0;
@@ -43,9 +47,9 @@ export default class Matrix extends React.Component {
     return points;
   }
 
-  renderPoints = (list, points) => {
+  renderPoints = (list, points, itemSize) => {
     return list.map((item, key) => {
-      return <div key={key} style={{position: 'absolute', left: points[key].x + 'px', top: points[key].y + 'px'}}>
+      return <div key={key} style={{position: 'absolute', left: points[key].x + 'px', top: points[key].y + 'px', display: 'flex', justifyContent:'center', alignItems: 'center', width: itemSize + 'px', height: itemSize + 'px'}}>
         {this.props.renderPoints(item, key)}
       </div>
     })
@@ -53,16 +57,19 @@ export default class Matrix extends React.Component {
 
   renderCircle = (list, points) => {
     return list.map((item, key) => {
-      return <circle key={key} style={{boxSizing: 'border-box'}} cx={points[key].centerX} cy={points[key].centerY} r={18.5} stroke="black"
-                     fill="red"/>
+      return <circle key={key} style={{boxSizing: 'border-box'}} cx={points[key].centerX} cy={points[key].centerY} r={18.5}
+                     fill="#8161be"/>
     })
 
   }
 
   render() {
-    const {list, columnNum, lineWidth, colGap, itemSize, padding} = this.props;
+    const {list, columnNum, colGap, itemSize, padding} = this.props;
+
+    let lineWidth = this.refs.signSvg ? parseInt(getComputedStyle(this.refs.signSvg).width.split('px')[0]) - 80 : 260;
+
     const points                                                  = this.renderContent(list.length, columnNum, lineWidth, colGap, itemSize, padding);
-    // 线间距的一半， 用来计算线的位置
+    // 线间距的一半，用来计算线的位置
     const halfColGap                                              = colGap / 2;
     let d                                                         = `M${0 - 30} ${halfColGap}`;
     // 行数
@@ -72,9 +79,9 @@ export default class Matrix extends React.Component {
     // 贝塞尔控制点的横坐标偏移量
     const bezierPoint                                             = 40;
     for (let idx_row = 0; idx_row < rows; idx_row++) {
-      // 上一条线的高度
+      // 上一条线的高度 计算贝塞尔控制点用
       let prevLineHeight    = idx_row * colGap - halfColGap;
-      // 当前线的高度  计算贝塞尔控制点用
+      // 当前线的高度 计算贝塞尔控制点用
       let currentLineHeight = idx_row * colGap + halfColGap;
       if (idx_row === 0 && idx_row === rows - 1) {
         d += `  L${linePercentage} ${halfColGap}`;
@@ -104,14 +111,15 @@ export default class Matrix extends React.Component {
 
     }
     return (
-        <div style={{
+        <div ref="signSvg" id="sign-svg" style={{
           position: 'relative',
           width   : '100%',
           height  : '100%',
           overflow: 'auto',
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
+          overflowX: 'hidden'
         }}>
-          {this.renderPoints(list, points)}
+          {this.renderPoints(list, points, itemSize)}
           <svg height="100%" version="1.1"
                xmlns="http://www.w3.org/2000/svg"
                style={{paddingLeft: this.props.padding,     overflow: 'visible'}}>
@@ -144,7 +152,6 @@ Matrix.propTypes = {
 Matrix.defaultProps = {
   list: [],
   columnNum: 6,
-  lineWidth: 280,
   colGap: 60,
   itemSize: 37,
   padding: 40,
