@@ -11,6 +11,7 @@ import Home from './home';
 import SliderExample from './slider';
 import ButtonExample from './button';
 import CurveExample from './curve';
+import SustainedCarouselExample from './sustained-carousel';
 const history  = createBrowserHistory();
 export default class App extends React.Component {
   render() {
@@ -21,6 +22,7 @@ export default class App extends React.Component {
              <Route path="/slider" component={SliderExample} />
              <Route path="/button" component={ButtonExample} />
              <Route path="/curve" component={CurveExample} />
+             <Route path="/carousel" component={SustainedCarouselExample} />
            </div>
          </Router>
     )

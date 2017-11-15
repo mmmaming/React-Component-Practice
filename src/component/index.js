@@ -5,8 +5,10 @@
 import Slider from './slider';
 import Button from './button';
 import Curve from './svg/curve';
+import SustainedCarousel from './sustained-carousel';
 export {
     Slider,
     Button,
-    Curve
+    Curve,
+    SustainedCarousel
 }
