@@ -1,0 +1,27 @@
+.one-arm-bandit {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently not supported by any browser */
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid red;
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+.fly-box {
+  z-index: -1000;
+  box-sizing: border-box;
+  background: #808080;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+}

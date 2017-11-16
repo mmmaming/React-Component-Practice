@@ -1,0 +1,64 @@
+html, body, #root {
+  font-family: fantasy;
+  text-align: center;
+}
+
+button {
+  border: 1px solid slategray
+}
+
+.mask-box {
+  border: 1px solid red;
+  margin-top: 150px;
+  height: 200px;
+  overflow: hidden;
+  background: rgba(12, 204, 108, 0.123);
+
+  -webkit-perspective: 5000px;
+  -moz-perspective: 5000px;
+  -ms-perspective: 5000px;
+  perspective: 5000px;
+}
+
+.one-arm-bandit-3d {
+  will-change: transform;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently not supported by any browser */
+
+  position: relative;
+  box-sizing: border-box;
+  
+  background: rgba(12, 47, 204, 0.2);
+  width: 100%;
+  height: 400px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform-style: preserve-3d;
+  transition: transform 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* overflow: hidden; */
+}
+
+.fly-box-3d {
+  box-sizing: border-box;
+  background: #915841;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  border: 5px solid white;
+  box-shadow: 0 0 20px white;
+}
+
+.no-delay {
+  transition: none;
+}

@@ -22,6 +22,9 @@ export default class Home extends React.Component {
             <li>
               <a href="#/carousel">持续轮播</a>
             </li>
+            <li>
+              <a href="#/oneArmBandit">老虎机</a>
+            </li>
           </ul>
         </div>
     )

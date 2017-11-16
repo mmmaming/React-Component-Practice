@@ -12,6 +12,7 @@ import SliderExample from './slider';
 import ButtonExample from './button';
 import CurveExample from './curve';
 import SustainedCarouselExample from './sustained-carousel';
+import OneArmBanditExample from './one-arm-bandit/one-arm-bandit-3d';
 const history  = createBrowserHistory();
 export default class App extends React.Component {
   render() {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
              <Route path="/button" component={ButtonExample} />
              <Route path="/curve" component={CurveExample} />
              <Route path="/carousel" component={SustainedCarouselExample} />
+             <Route path="/oneArmBandit" component={OneArmBanditExample} />
            </div>
          </Router>
     )
