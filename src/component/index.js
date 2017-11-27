@@ -6,9 +6,11 @@ import Slider from './slider';
 import Button from './button';
 import Curve from './svg/curve';
 import SustainedCarousel from './sustained-carousel';
+import OneArmBandit from './one-arm-bandit';
 export {
     Slider,
     Button,
     Curve,
-    SustainedCarousel
+    SustainedCarousel,
+    OneArmBandit
 }

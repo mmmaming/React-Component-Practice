@@ -12,7 +12,7 @@ import SliderExample from './slider';
 import ButtonExample from './button';
 import CurveExample from './curve';
 import SustainedCarouselExample from './sustained-carousel';
-import OneArmBanditExample from './one-arm-bandit/one-arm-bandit-3d';
+import OneArmBanditExample from './one-arm-bandit';
 const history  = createBrowserHistory();
 export default class App extends React.Component {
   render() {
