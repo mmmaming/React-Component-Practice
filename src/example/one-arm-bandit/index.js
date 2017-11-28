@@ -8,7 +8,7 @@ import {
 export default class OneArmBanditExample extends React.Component {
   render() {
    const list = [
-        1,2,3,4,5,
+        1,2,3,4,5,6,7
     ];
     return (
         <div>

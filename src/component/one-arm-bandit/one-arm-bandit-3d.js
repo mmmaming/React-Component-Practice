@@ -76,12 +76,13 @@ export default class OneArmBandit extends React.Component {
     });
   }
 
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	if (this.state.rotateX !== nextState.rotateX || this.props.list.length !== nextProps.list.length) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.rotateX !== nextState.rotateX
+        || this.props.list.length !== nextProps.list.length) {
+      return true;
+    }
+    return false;
+  }
 
   renderBoxs(list) {
     if (this.mask) {
@@ -113,7 +114,6 @@ export default class OneArmBandit extends React.Component {
   }
 
   render() {
-    console.log('renderrrrrrrrrrr');
     const {list} = this.props;
 		const boxs = this.renderBoxs(list);
 		const { rotateX, rotateY }  = this.state;
