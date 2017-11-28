@@ -28,7 +28,7 @@ class LotteryTicketItem extends React.Component {
 		const {transform, index} = this.props;
     return (
 				<div style={{transform: transform,
-          width: '200px',
+          width: '90%',
           height: '103px',
           background: 'lightblue',
           position: 'absolute',
@@ -64,6 +64,18 @@ export default class OneArmBandit extends React.Component {
 		this.isRaffling = false;
 	}
 
+	left = () => {
+    this.setState({
+      rotateY: this.state.rotateY + 10
+    });
+  }
+
+  right = () => {
+    this.setState({
+      rotateY: this.state.rotateY - 10
+    });
+  }
+
 	// shouldComponentUpdate(nextProps, nextState) {
 	// 	if (this.state.rotateX !== nextState.rotateX || this.props.list.length !== nextProps.list.length) {
 	// 		return true;
@@ -72,7 +84,6 @@ export default class OneArmBandit extends React.Component {
 	// }
 
   renderBoxs(list) {
-    console.log(this.mask);
     if (this.mask) {
       this.size = parseInt(getComputedStyle(this.mask).height) * 0.616;
     }
@@ -102,7 +113,8 @@ export default class OneArmBandit extends React.Component {
   }
 
   render() {
-		const {list} = this.props;
+    console.log('renderrrrrrrrrrr');
+    const {list} = this.props;
 		const boxs = this.renderBoxs(list);
 		const { rotateX, rotateY }  = this.state;
 		const transform = [
@@ -113,13 +125,19 @@ export default class OneArmBandit extends React.Component {
 
 		return (
 				<div>
-          <div ref={(mask) => this.mask = mask} className="maskBox">
-            <div  onTransitionEnd={this.end} className="oneArmBandit" style={{ transform }}>
-              {boxs}
+          <h1 className="h1">嗨皮老虎机</h1>
+          <div className="oneArmBanditWrapper">
+            <div ref={(mask) => this.mask = mask} className="maskBox">
+              <div onTransitionEnd={this.end} className="oneArmBandit" style={{ transform }}>
+                {boxs}
+              </div>
             </div>
           </div>
-
-          <button onClick={this.start} className="button">滾動</button>
+         <div className="btnGroup">
+           <button onClick={this.left} className="button">turn left</button>
+           <button onClick={this.start} className="button">动起来</button>
+           <button onClick={this.right} className="button">turn right</button>
+         </div>
 				</div>
     )
   }

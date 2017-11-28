@@ -12,7 +12,15 @@ export default class OneArmBanditExample extends React.Component {
     ];
     return (
         <div>
-          <OneArmBandit list={list}/>
+          <div style={{
+            position: 'absolute',
+            transform: 'translate(-50%)',
+            left: '50%',
+            top: '143px',
+            width: '300px'
+          }}>
+            <OneArmBandit list={list}/>
+          </div>
         </div>
     )
   }

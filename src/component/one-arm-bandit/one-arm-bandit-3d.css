@@ -1,3 +1,14 @@
+.h1 {
+    color: #ff9800;
+    font-family: cursive;
+    text-align: center;
+    box-shadow: 1px 1px 3px;
+}
+.oneArmBanditWrapper {
+    border: 10px solid yellow;
+    box-shadow: 7px 7px 6px slategrey;
+    border-radius: 13px;
+}
 .maskBox {
   overflow: hidden;
   background: #FFF;
@@ -6,11 +17,6 @@
   -ms-perspective: 5000px;
   perspective: 5000px;
   height: 165px;
-  position: absolute;
-  transform: translate(-50%);
-  left: 50%;
-  top: 143px;
-  width: 265px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,27 +38,22 @@
   justify-content: center;
   align-items: center;
   transform-style: preserve-3d;
-  transition: transform 6s cubic-bezier(.465, 0.05, 0, 1);
+  transition: transform 3s cubic-bezier(.465, 0.05, 0, 1);
 }
 
-.flyBox3d {
-  width: 315px;
-  height: 390px;
-  box-sizing: border-box;
-  background: #915841;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  border: 5px solid white;
-  box-shadow: 0 0 20px white;
+.btnGroup {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
 .button {
-    width: 100px;
-    height: 30px;
-    background: lightblue;
+    width: 122px;
+    height: 52px;
+    background: #6ecdec;
     outline: none;
+    border: 2px solid #f1ddf2;
+    border-radius: 7px;
+    font-size: 18px;
+    color: #fcfcfc;
 }
