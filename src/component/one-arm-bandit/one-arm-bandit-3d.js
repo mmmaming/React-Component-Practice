@@ -77,8 +77,9 @@ export default class OneArmBandit extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.rotateX !== nextState.rotateX
-        || this.props.list.length !== nextProps.list.length) {
+    if (this.state.rotateX !== nextState.rotateX ||
+        this.props.list.length !== nextProps.list.length ||
+        this.state.rotateY !== nextState.rotateY) {
       return true;
     }
     return false;
