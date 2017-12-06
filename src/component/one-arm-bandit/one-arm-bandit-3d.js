@@ -86,9 +86,6 @@ export default class OneArmBandit extends React.Component {
   }
 
   renderBoxs(list) {
-    if (this.mask) {
-      this.size = parseInt(getComputedStyle(this.mask).height) * 0.616;
-    }
 		const angle    = 360 / list.length;
     const half_height  = this.size * 0.5;
     const radius      = half_height / Math.tan(RAD(angle * 0.5));
