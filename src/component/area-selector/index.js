@@ -7,7 +7,6 @@ export default class AreaSelector extends React.Component {
 	state = {close: false};
 	confirm = (text, selected) => {
 		const { onChange } = this.props;
-		// 先执行关闭动画，再隐藏选择器，并重置close动画状态
 		this.setState({close: true}, () => {
 			setTimeout(() => {
 				this.setState({close: false});

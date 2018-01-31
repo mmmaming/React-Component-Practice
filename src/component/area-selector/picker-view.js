@@ -25,7 +25,7 @@ export default class PickerView extends React.Component {
 		super(props);
 		this.state = {
 			touching: false,
-			offsetsY: 0, // 每次拖动的位移长度
+			offsetsY: 0,
 			startTranslate: 0,
 			touchId: undefined,
 			translate: 0,
@@ -45,7 +45,6 @@ export default class PickerView extends React.Component {
 			touching: true,
 			touchId: e.targetTouches[0].identifier,
 			startTranslate: this.state.translate,
-			// 每次移动时，translate的距离等于pageY的差值(也就是本次移动的距离) + 上次translate的距离
 			offsetsY: e.targetTouches[0].pageY - this.state.translate,
 			animating: false
 		});
@@ -74,16 +73,12 @@ export default class PickerView extends React.Component {
 		const { itemHeight } = this.props;
 		let resetIndexFlag = true;
 		let translate = this.state.translate;
-		// 移动的距离小于单行高的一半，恢复为滑动前的位置
 		if( Math.abs(translate - this.state.startTranslate) < ( itemHeight * 0.51 ) ){
 			translate = this.state.startTranslate;
-			// 如果指示标超过第0个继续往上滑，则恢复到指示标的第0个位置
 		}else if(translate > this.indicatorTop) {
 			translate = this.indicatorTop;
-			// translate+总行高( = translate行底高) 小于 指示标最下方的位置，则说明超出最后一个位置，恢复到最后一个位置的translate
 		}else if(translate + this.state.totalHeight  < this.indicatorTop + itemHeight) {
 			translate = this.indicatorTop + itemHeight - this.state.totalHeight;
-			// 超过一行并且没有超出边界
 		}else{
 			let rows = (translate - this.state.startTranslate) / itemHeight;
 			let integer = parseInt(rows);

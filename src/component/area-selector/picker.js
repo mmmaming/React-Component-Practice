@@ -46,7 +46,6 @@ export default class Picker extends React.Component {
 			text: text
 		}
 	}
-	// 默认selected处理，将不合法selected转为合法selected
 	defaultSelectedToIndex(data, defaultSelected, listsLength) {
 		let selected = new Array(listsLength).fill(0);
 		let key = 0;
@@ -63,7 +62,6 @@ export default class Picker extends React.Component {
 		}
 		return selected;
 	}
-// 默认地址处理，将地址转成对应合法selected
 	defaultTextToIndex(data, defaultText, listsLength) {
 		let selected = new Array(listsLength).fill(0);
 		let key = 0;
@@ -106,7 +104,6 @@ export default class Picker extends React.Component {
 		let { selected } = this.state;
 		let text = '';
 		const { data } = this.props;
-		// 上一级数据变化时，重置下一级显示数据为第0个
 		const resetSelected = (arr, key) => {
 			var k = key;
 			while (arr[k + 1] || arr[k + 1] === 0) {
