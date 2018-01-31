@@ -12,27 +12,25 @@ import {
 
 export default class AreaSelectorExample extends React.Component {
 
-  state = { show: false }
+  state = { show: false, text: [] }
 
   open = () => {
     this.setState({show: true})
   }
 
   cancel = () => {
-    console.log(1111);
     this.setState({show: false})
   }
 
-  confirm = () => {
-    console.log(222);
-    this.setState({show: false})
+  confirm = (text, index) => {
+    this.setState({show: false, text})
   }
   render() {
 
     return (
         <div>
           <button onClick={this.open}>open</button>
-          {this.state.show ? 'true' : 'false'}
+          {this.state.text.join('')}
           <AreaSelector show={this.state.show}
                         onChange={this.confirm}
                         onCancel={this.cancel}

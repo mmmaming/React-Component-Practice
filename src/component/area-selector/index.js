@@ -27,7 +27,6 @@ export default class AreaSelector extends React.Component {
 
 	render() {
 		const { defaultText, itemHeight, rowCount, defaultSelected, show } = this.props;
-    console.log(show);
     return show ? (
 				<div className="area-selector-container">
 					<div className="mask" onClick={this.cancel} />

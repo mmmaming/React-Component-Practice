@@ -5,6 +5,7 @@
   background-color: #fbf9fe;
   border-bottom: 1px solid #dddddd;
   color: #586C94;
+  padding: 10px;
 
 }
 .picker-container .picker-wrapper {
@@ -19,8 +20,28 @@
 .picker-container button:first-child {
     padding: 0 15px;
     text-align: left;
+    background: transparent;
+    color: inherit;
+    outline: 0;
+    width: 100%;
+    border: 0 solid;
+    box-sizing: border-box;
+    font: inherit;
+    line-height: inherit;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 .picker-container button:last-child {
     padding: 0 15px;
     text-align: right;
+    background: transparent;
+    color: inherit;
+    outline: 0;
+    width: 100%;
+    border: 0 solid;
+    box-sizing: border-box;
+    font: inherit;
+    line-height: inherit;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
 }
