@@ -25,6 +25,9 @@ export default class Home extends React.Component {
             <li>
               <a href="#/oneArmBandit">老虎机</a>
             </li>
+            <li>
+              <a href="#/areaSelector">地区选择器</a>
+            </li>
           </ul>
         </div>
     )

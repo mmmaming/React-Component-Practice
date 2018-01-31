@@ -1,0 +1,26 @@
+
+.picker-container .picker-button-panel {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fbf9fe;
+  border-bottom: 1px solid #dddddd;
+  color: #586C94;
+
+}
+.picker-container .picker-wrapper {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.picker-container button {
+    cursor: pointer;
+}
+.picker-container button:first-child {
+    padding: 0 15px;
+    text-align: left;
+}
+.picker-container button:last-child {
+    padding: 0 15px;
+    text-align: right;
+}

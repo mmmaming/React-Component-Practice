@@ -7,10 +7,12 @@ import Button from './button';
 import Curve from './svg/curve';
 import SustainedCarousel from './sustained-carousel';
 import OneArmBandit from './one-arm-bandit';
+import AreaSelector from './area-selector';
 export {
     Slider,
     Button,
     Curve,
     SustainedCarousel,
-    OneArmBandit
+    OneArmBandit,
+    AreaSelector
 }
