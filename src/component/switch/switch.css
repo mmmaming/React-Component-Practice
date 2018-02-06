@@ -1,0 +1,66 @@
+
+.switch {
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+
+}
+
+.switch-wrapper {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.switch-circle {
+    width: 51px;
+    height: 31px;
+    border-radius: 31px;
+    background: #e5e5e5;
+    cursor: pointer;
+    position: relative;
+    transition: all 300ms;
+}
+
+.switch-circle:before {
+    content: '';
+    position: absolute;
+    left: 1.5px;
+    top: 1.5px;
+    width: 48px;
+    height: 28px;
+    border-radius: 28px;
+    background: #fff;
+    transition: all 200ms;
+    transform: scale(1);
+}
+
+.switch-circle:after {
+    content: '';
+    height: 28px;
+    width: 28px;
+    border-radius: 28px;
+    background: #ffffff;
+    position: absolute;
+    left: 1.5px;
+    top: 1.5px;
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    transition: all 200ms;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.21);
+}
+
+input[type="checkbox"]:checked + .switch-circle {
+    background: #4dd865;
+}
+
+input[type="checkbox"]:checked + .switch-circle:before {
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+input[type="checkbox"]:checked + .switch-circle:after {
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}

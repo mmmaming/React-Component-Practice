@@ -28,6 +28,9 @@ export default class Home extends React.Component {
             <li>
               <a href="#/areaSelector">地区选择器</a>
             </li>
+            <li>
+              <a href="#/switch">Switch</a>
+            </li>
           </ul>
         </div>
     )
