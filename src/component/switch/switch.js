@@ -12,6 +12,11 @@ export default class Switch extends React.Component {
     super(props);
     this.state = {checked: props.checked}
   }
+
+  componentWillReceiveProps(props) {
+    this.setState({checked: props.checked});
+  }
+
   onChange = () => {
     this.setState({checked: !this.state.checked}, () => this.props.onChange(this.state.checked));
 
