@@ -77,7 +77,7 @@ class Slider extends React.Component {
         const startX = e.nativeEvent.changedTouches[0].clientX;
         Object.assign(self._touchObject, {startX: startX});
         // 当前移动距离占显示宽度的百分比
-        self.ticker = setInterval(self.swipe, 100);
+        self.ticker = setInterval(self.swipe, 0);
       },
       onTouchMove(e) {
         const direction = self.getDirection(self._touchObject.startX, e.nativeEvent.changedTouches[0].clientX);

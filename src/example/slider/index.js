@@ -37,6 +37,16 @@ export default class SliderExample extends React.Component {
                   2222222222222222222
                 </div>
               </Slider.Item>
+              <Slider.Item>
+                <div style={{height: '150px'}}>
+                  333333333333333333
+                </div>
+              </Slider.Item>
+              <Slider.Item>
+                <div style={{height: '150px'}}>
+                  4444444444444444
+                </div>
+              </Slider.Item>
               {
                 this.list.map((v, i) => <Slider.Item key={i}>{v}</Slider.Item>)
               }
